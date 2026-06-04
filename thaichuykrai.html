@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เครื่องคำนวณสัดส่วน 60/40 📊</title>
+    <style>
+        /* ตกแต่งหน้าตาเว็บให้ดูสะอาดและทันสมัย */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 18px;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+
+        input[type="number"]:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+
+        .result-container {
+            background-color: #f8f9fa;
+            border-left: 5px solid #2ecc71;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .result-item {
+            font-size: 16px;
+            color: #555;
+            margin: 8px 0;
+        }
+
+        .highlight {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2ecc71;
+        }
+        
+        .secondary {
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator-card">
+        <h2>เครื่องคำนวณสัดส่วน 60/40</h2>
+        
+        <div class="input-group">
+            <label for="amount">กรอกตัวเลขที่ต้องการคำนวณ:</label>
+            <input type="number" id="amount" placeholder="เช่น 1000" oninput="calculatePercent()">
+        </div>
+
+        <div class="result-container">
+            <div class="result-item">
+                <span>สัดส่วน 40% คือ: </span>
+                <span id="result-40" class="highlight">0</span>
+            </div>
+            <div class="result-item secondary">
+                <span>สัดส่วน 60% คือ: </span>
+                <span id="result-60">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculatePercent() {
+            // ดึงค่าตัวเลขจากช่อง Input
+            const amountInput = document.getElementById('amount').value;
+            const amount = parseFloat(amountInput);
+
+            // ตรวจสอบว่าผู้ใช้กรอกตัวเลขถูกต้องหรือไม่
+            if (isNaN(amount) || amount < 0) {
+                document.getElementById('result-40').textContent = '0';
+                document.getElementById('result-60').textContent = '0';
+                return;
+            }
+
+            // คำนวณสัดส่วนตามสูตรคณิตศาสตร์
+            const value40 = amount * 0.4;
+            const value60 = amount * 0.6;
+
+            // แสดงผลลัพธ์บนหน้าเว็บ โดยใช้ toLocaleString() เพื่อให้มีลูกคั่นคอมมา (เช่น 1,000) ดูง่ายขึ้น
+            // และจำกัดทศนิยมไว้สูงสุด 2 ตำแหน่ง
+            document.getElementById('result-40').textContent = value40.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 2});
+            document.getElementById('result-60').textContent = value60.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 2});
+        }
+    </script>
+
+</body>
+</html>
