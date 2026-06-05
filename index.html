@@ -68,6 +68,9 @@
             color: #222;
             margin: 0;
         }
+        #result60 {
+            color: #CC0000; 
+        }
         #result40 {
             color: #2e7d32; 
         }
@@ -89,21 +92,21 @@
 <body>
 
 <div class="container">
-    <h2>คำนวณสัดส่วน 60/40</h2>
+    <h2>คำนวณอัตโนมัติ 60/40</h2>
     
     <div class="input-group">
-        <label for="amount">กรอกจำนวนเต็ม:</label>
-        <input type="number" id="amount" placeholder="ใส่ตัวเลขที่นี่..." oninput="calculateRatio()">
+        <label for="amount">ใส่ราคาสินค้า</label>
+        <input type="number" id="amount" placeholder="ราคา..." oninput="calculateRatio()">
     </div>
 
     <div class="result-container">
         <div class="result-row">
-            <p class="result-label">ผลลัพธ์ (60%) คือ</p>
+            <p class="result-label">รัฐจ่าย 60% = คือ</p>
             <p class="result-value" id="result60">0</p>
         </div>
         
         <div class="result-row">
-            <p class="result-label">ผลลัพธ์ (40%) คือ</p>
+            <p class="result-label">เราจ่าย 40% = คือ</p>
             <p class="result-value" id="result40">0</p>
         </div>
     </div>
@@ -137,7 +140,7 @@
             let overrun = value40 - 133.33;
             
             // แสดงข้อความแจ้งเตือนพร้อมจำนวนที่เกิน (จัดรูปแบบทศนิยม 2 ตำแหน่ง)
-            warningBox.innerText = `⚠️ เกินกำหนดมา ${Number(overrun.toFixed(2)).toLocaleString()}`;
+            warningBox.innerText = `⚠️ ส่วนต่างที่ต้องจ่ายเพิ่ม ${Number(overrun.toFixed(2)).toLocaleString()}`;
             warningBox.style.display = 'block'; // สั่งให้กล่องแจ้งเตือนแสดงตัวออกหน้าเว็บ
         } else {
             warningBox.style.display = 'none'; // ถ้าไม่เกิน ให้ซ่อนกล่องแจ้่งเตือนไว้ตามเดิม
