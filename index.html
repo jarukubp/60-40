@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณไทยช่วยไทย</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 350px;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        .result-box {
+            background-image: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+        .result-title {
+            font-size: 14px;
+            color: #2e7d32;
+            margin: 0 0 5px 0;
+        }
+        .result-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1b5e20;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>คำนวณไทยช่วยไทย 60/40</h2>
+    
+    <div class="input-group">
+        <label for="amount">ใส่ราคาสินค้า</label>
+        <input type="number" id="amount" placeholder="จำนวน" oninput="calculate40()">
+    </div>
+
+    <div class="result-box">
+        <p class="result-title">ราคาที่ต้องจ่าย (40%) =</p>
+        <p class="result-value" id="result">0</p>
+    </div>
+</div>
+
+<script>
+    function calculate40() {
+        // ดึงค่าจากช่องกรอกข้อมูล
+        let amount = document.getElementById('amount').value;
+        
+        // ตรวจสอบว่ามีการกรอกตัวเลขจริงไหม
+        if (amount === '' || isNaN(amount)) {
+            document.getElementById('result').innerText = '0';
+            return;
+        }
+        
+        // คำนวณหาค่า 40% (สูตร: จำนวนเต็ม * 0.4)
+        let result = parseFloat(amount) * 0.4;
+        
+        // แสดงผลลัพธ์ในหน้าเว็บ (แสดงทศนิยม 2 ตำแหน่งเพื่อความแม่นยำ)
+        // ถ้าเป็นเลขลงตัว ทศนิยมจะหายไปเองด้วยการใช้ Number() ครอบอีกที
+        document.getElementById('result').innerText = Number(result.toFixed(2)).toLocaleString();
+    }
+</script>
+
+</body>
+</html>
