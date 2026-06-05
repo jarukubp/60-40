@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>โปรแกรมคำนวณ 60/40</title>
+    <title>คำนวณไทยช่วยไทย พลัส</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -69,26 +69,29 @@
             color: #222;
             margin: 0;
         }
+        #result40 {
+    color: #2e7d32; /* สีเขียวโทนสบายตาและเห็นเด่นชัด */
+}
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>คำนวณสัดส่วน 60/40</h2>
+    <h2>คำนวณอัตโนมัติ 60/40</h2>
     
     <div class="input-group">
-        <label for="amount">กรอกจำนวนเต็ม:</label>
-        <input type="number" id="amount" placeholder="ใส่ตัวเลขที่นี่..." oninput="calculateRatio()">
+        <label for="amount">ใส่ราคาสินค้า</label>
+        <input type="number" id="amount" placeholder="ราคา..." oninput="calculateRatio()">
     </div>
 
     <div class="result-container">
         <div class="result-row">
-            <p class="result-label">ผลลัพธ์ (60%) คือ</p>
+            <p class="result-label">รัฐจ่าย 60% =</p>
             <p class="result-value" id="result60">0</p>
         </div>
         
         <div class="result-row">
-            <p class="result-label">ผลลัพธ์ (40%) คือ</p>
+            <p class="result-label">เราจ่าย 40% =</p>
             <p class="result-value" id="result40">0</p>
         </div>
     </div>
