@@ -74,6 +74,19 @@
         }
         #result40 {
     color: #2e7d32; /* สีเขียวโทนสบายตาและเห็นเด่นชัด */
+        }
+        /* สไตล์ของข้อความแจ้งเตือน */
+        .warning-box {
+            color: #d32f2f;
+            background-color: #ffebee;
+            border: 1px solid #ffcdd2;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: center;
+            display: none; /* ซ่อนไว้ก่อนในตอนแรก */
+            font-weight: bold;
         
 }
     </style>
@@ -99,6 +112,8 @@
             <p class="result-value" id="result40">0</p>
         </div>
     </div>
+
+    <div id="warningMessage" class="warning-box"></div>
 </div>
 
 <script>
@@ -122,6 +137,18 @@
         // ส่งผลลัพธ์ไปแสดงผลบนหน้าเว็บ พร้อมจัดรูปแบบตัวเลขให้สวยงาม
         document.getElementById('result60').innerText = Number(value60.toFixed(2)).toLocaleString();
         document.getElementById('result40').innerText = Number(value40.toFixed(2)).toLocaleString();
+
+        // --- ส่วนตรวจสอบเงื่อนไขแจ้งเตือน ---
+        if (value40 > 133.33) {
+            // คำนวณจำนวนที่เกินจาก 133.33
+            let overrun = value40 - 133.33;
+            
+            // แสดงข้อความแจ้งเตือนพร้อมจำนวนที่เกิน (จัดรูปแบบทศนิยม 2 ตำแหน่ง)
+            warningBox.innerText = `⚠️ เกินกำหนดมา ${Number(overrun.toFixed(2)).toLocaleString()}`;
+            warningBox.style.display = 'block'; // สั่งให้กล่องแจ้งเตือนแสดงตัวออกหน้าเว็บ
+        } else {
+            warningBox.style.display = 'none'; // ถ้าไม่เกิน ให้ซ่อนกล่องแจ้่งเตือนไว้ตามเดิม
+        }
     }
 </script>
 
