@@ -140,7 +140,7 @@
             let overrun = value40 - 133.33;
             
             // แสดงข้อความแจ้งเตือนพร้อมจำนวนที่เกิน (จัดรูปแบบทศนิยม 2 ตำแหน่ง)
-            warningBox.innerText = `⚠️ ส่วนต่างที่ต้องจ่ายเพิ่ม ${Number(overrun.toFixed(2)).toLocaleString()}`;
+            warningBox.innerText = `⚠️ ส่วนต่างที่ต้องจ่ายเพิ่ม ${Number(overrun.toFixed(2)).toLocaleString()} บาท`;
             warningBox.style.display = 'block'; // สั่งให้กล่องแจ้งเตือนแสดงตัวออกหน้าเว็บ
         } else {
             warningBox.style.display = 'none'; // ถ้าไม่เกิน ให้ซ่อนกล่องแจ้่งเตือนไว้ตามเดิม
