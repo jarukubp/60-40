@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>คำนวณไทยช่วยไทย พลัส</title>
+    <title>โปรแกรมคำนวณ 60/40</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -44,7 +44,6 @@
             box-sizing: border-box;
             text-align: center;
         }
-        /* ส่วนแสดงผลลัพธ์แบบเรียบง่าย ไม่ต้องไฮไลท์กล่อง */
         .result-container {
             margin-top: 20px;
             text-align: left;
@@ -53,10 +52,10 @@
         .result-row {
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 1px dashed #eee; /* เส้นประบางๆ แบ่งสัดส่วน */
+            border-bottom: 1px dashed #eee;
         }
         .result-row:last-child {
-            border-bottom: none; /* แถวสุดท้ายไม่ต้องมีเส้นประ */
+            border-bottom: none;
         }
         .result-label {
             font-size: 14px;
@@ -69,11 +68,8 @@
             color: #222;
             margin: 0;
         }
-        #result60 {
-    color: #CC0000; /* สีเขียวโทนสบายตาและเห็นเด่นชัด */
-        }
         #result40 {
-    color: #2e7d32; /* สีเขียวโทนสบายตาและเห็นเด่นชัด */
+            color: #2e7d32; 
         }
         /* สไตล์ของข้อความแจ้งเตือน */
         .warning-box {
@@ -87,28 +83,27 @@
             text-align: center;
             display: none; /* ซ่อนไว้ก่อนในตอนแรก */
             font-weight: bold;
-        
-}
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>คำนวณอัตโนมัติ 60/40</h2>
+    <h2>คำนวณสัดส่วน 60/40</h2>
     
     <div class="input-group">
-        <label for="amount">ใส่ราคาสินค้า</label>
-        <input type="number" id="amount" placeholder="ราคา..." oninput="calculateRatio()">
+        <label for="amount">กรอกจำนวนเต็ม:</label>
+        <input type="number" id="amount" placeholder="ใส่ตัวเลขที่นี่..." oninput="calculateRatio()">
     </div>
 
     <div class="result-container">
         <div class="result-row">
-            <p class="result-label">รัฐจ่าย 60% =</p>
+            <p class="result-label">ผลลัพธ์ (60%) คือ</p>
             <p class="result-value" id="result60">0</p>
         </div>
         
         <div class="result-row">
-            <p class="result-label">เราจ่าย 40% =</p>
+            <p class="result-label">ผลลัพธ์ (40%) คือ</p>
             <p class="result-value" id="result40">0</p>
         </div>
     </div>
@@ -118,26 +113,24 @@
 
 <script>
     function calculateRatio() {
-        // ดึงค่าจากช่องกรอกข้อมูล
         let amount = document.getElementById('amount').value;
+        let warningBox = document.getElementById('warningMessage');
         
-        // ถ้าไม่มีการกรอกข้อมูล ให้เซ็ตเป็น 0 ทั้งคู่
         if (amount === '' || isNaN(amount)) {
             document.getElementById('result60').innerText = '0';
             document.getElementById('result40').innerText = '0';
+            warningBox.style.display = 'none'; // ซ่อนข้อความเตือนเมื่อไม่มีข้อมูล
             return;
         }
         
         let currentAmount = parseFloat(amount);
         
-        // คำนวณค่าสัดส่วน 60% และ 40%
         let value60 = currentAmount * 0.6;
         let value40 = currentAmount * 0.4;
         
-        // ส่งผลลัพธ์ไปแสดงผลบนหน้าเว็บ พร้อมจัดรูปแบบตัวเลขให้สวยงาม
         document.getElementById('result60').innerText = Number(value60.toFixed(2)).toLocaleString();
         document.getElementById('result40').innerText = Number(value40.toFixed(2)).toLocaleString();
-
+        
         // --- ส่วนตรวจสอบเงื่อนไขแจ้งเตือน ---
         if (value40 > 133.33) {
             // คำนวณจำนวนที่เกินจาก 133.33
